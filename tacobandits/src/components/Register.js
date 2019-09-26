@@ -1,10 +1,11 @@
 import React from 'react';
 import axios from 'axios';
 
-class Login extends React.Component {
+class Register extends React.Component {
 	state = {
 		username: '',
-		password: ''
+    password1: '',
+    password2: ''
 	}
 
 	handleChange = e => {
@@ -15,12 +16,12 @@ class Login extends React.Component {
 
 	handleSubmit = e => {
 		e.preventDefault()
-		const endpoint = 'https://tacobandits.herokuapp.com/api/login/';
+		const endpoint = 'https://tacobandits.herokuapp.com/api/registration/';
 
 		axios
 			.post(endpoint, this.state)
 			.then(response => {
-				localStorage.setItem('key', response.key)
+        localStorage.setItem('key', response.key)
 			})
 			.catch(error => console.log(error));
 	};
@@ -28,22 +29,31 @@ class Login extends React.Component {
 	render() {
 		return (
 			<div>
-				<h2>Welcome, Log-In!</h2>
+				<h2>Welcome, Please Register!</h2>
 				<form onSubmit={this.handleSubmit}>
+					
 					<input 
 						label='username'
-						name='username'
+            name='username'
 						id='username'
 						type='text'
 						value={this.state.username}
 						onChange={this.handleChange}
 					/>
 					<input 
-						label='password' 
-						name='password'
-						id='password'
+						label='password1' 
+            name='password1'
+						id='password1'
 						type='password'
-						value={this.state.password}
+						value={this.state.password1}
+						onChange={this.handleChange}
+					/>
+          <input 
+						label='password2'
+            name='password2' 
+						id='password2'
+						type='password'
+						value={this.state.password2}
 						onChange={this.handleChange}
 					/>
 					<button type='submit'>submit</button>
@@ -53,4 +63,4 @@ class Login extends React.Component {
 	}
 }
 
-export default Login
+export default Register;
