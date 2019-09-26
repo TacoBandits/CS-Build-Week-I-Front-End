@@ -21,6 +21,7 @@ class Login extends React.Component {
 			.post(endpoint, this.state)
 			.then(response => {
 				localStorage.setItem('key', response.key)
+				this.props.history.push('/game')
 			})
 			.catch(error => console.log(error));
 	};

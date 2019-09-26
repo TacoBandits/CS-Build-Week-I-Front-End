@@ -4,6 +4,8 @@ import Login from './components/Login';
 import Register from './components/Register';
 import World from './components/World';
 import './App.css';
+import tacocat from './images/TACOCAT.svg';
+import {Image} from 'semantic-ui-react';
 
 class App extends React.Component {
 
@@ -25,7 +27,8 @@ class App extends React.Component {
         </header>
         
         <h1>Welcome to the Taco Bandits game!</h1>
-        <p>. . . where you must escape from Tacocat, the Purrrrrrveyor of Palindromes!</p>
+        <p>. . . help Tacocat, the Purrrrrrveyor of Palindromes, escape from being eaten!</p>
+
         <div>
           <Route path='/register' component={Register} />
           <Route path='/login' component={Login} />
