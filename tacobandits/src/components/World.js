@@ -1,9 +1,13 @@
 import React from 'react'; 
 import axios from 'axios';
+
+const key = localStorage.getItem('key');
 class World extends React.Component {
 
     componentDidMount() {
-        axios.get("https://lambda-mud-test.herokuapp.com/api/adv/rooms")
+        axios.get("https://tacobandits.herokuapp.com/api/adv/rooms", {Authorization: `Token ${key}`}).then(res => {
+        this.setState({rooms: res.data}) 
+        }).catch(error => console.log(error))
     }
 
     goUp = () => {
