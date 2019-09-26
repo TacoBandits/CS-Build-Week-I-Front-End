@@ -16,12 +16,12 @@ class Register extends React.Component {
 
 	handleSubmit = e => {
 		e.preventDefault()
-		const endpoint = 'http://localhost:8000/api/register';
+		const endpoint = 'https://tacobandits.herokuapp.com/api/registration/';
 
 		axios
 			.post(endpoint, this.state)
 			.then(response => {
-				// gonna have to get this part figred out, how to grab key?
+        localStorage.setItem('key', response.key)
 			})
 			.catch(error => console.log(error));
 	};
@@ -34,24 +34,27 @@ class Register extends React.Component {
 					
 					<input 
 						label='username'
+            name='username'
 						id='username'
 						type='text'
 						value={this.state.username}
-						onChange={this.handleSubmit}
+						onChange={this.handleChange}
 					/>
 					<input 
 						label='password1' 
+            name='password1'
 						id='password1'
 						type='password'
 						value={this.state.password1}
-						onChange={this.handleSubmit}
+						onChange={this.handleChange}
 					/>
           <input 
-						label='password2' 
+						label='password2'
+            name='password2' 
 						id='password2'
 						type='password'
 						value={this.state.password2}
-						onChange={this.handleSubmit}
+						onChange={this.handleChange}
 					/>
 					<button type='submit'>submit</button>
 				</form>

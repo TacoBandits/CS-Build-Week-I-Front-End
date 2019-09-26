@@ -15,12 +15,12 @@ class Login extends React.Component {
 
 	handleSubmit = e => {
 		e.preventDefault()
-		const endpoint = 'http://localhost:8000/api/login';
+		const endpoint = 'https://tacobandits.herokuapp.com/api/login/';
 
 		axios
 			.post(endpoint, this.state)
 			.then(response => {
-				// gonna have to get this part figred out, how to grab key?
+				localStorage.setItem('key', response.key)
 			})
 			.catch(error => console.log(error));
 	};
@@ -30,20 +30,21 @@ class Login extends React.Component {
 			<div>
 				<h2>Welcome, Log-In!</h2>
 				<form onSubmit={this.handleSubmit}>
-					
 					<input 
 						label='username'
+						name='username'
 						id='username'
 						type='text'
 						value={this.state.username}
-						onChange={this.handleSubmit}
+						onChange={this.handleChange}
 					/>
 					<input 
 						label='password' 
+						name='password'
 						id='password'
-						type='text'
+						type='password'
 						value={this.state.password}
-						onChange={this.handleSubmit}
+						onChange={this.handleChange}
 					/>
 					<button type='submit'>submit</button>
 				</form>
