@@ -5,7 +5,7 @@ import Register from './components/Register';
 import World from './components/World';
 import './App.css';
 import tacocat from './images/TACOCAT.svg';
-import {Image} from 'semantic-ui-react';
+import {Image, Button} from 'semantic-ui-react';
 
 class App extends React.Component {
 
@@ -19,15 +19,17 @@ class App extends React.Component {
       <div className="App">
         <header>
           <nav>
-            <NavLink to='/register'>Sign-Up</NavLink>
-            <NavLink to='/login'>Log-In</NavLink>
-            <NavLink to='/game'>Play!</NavLink>
-            <p onClick={this.logout}>Log-Out</p>
+            <Button.Group>
+            <Button><NavLink to='/register'>Sign-Up</NavLink></Button>
+            <Button><NavLink to='/login'>Log-In</NavLink></Button>
+            <Button><NavLink to='/game'>Play!</NavLink></Button>
+            <Button onClick={this.logout}>Log-Out</Button>
+            </Button.Group>
           </nav>
         </header>
         
-        <h1>Welcome to the Taco Bandits game!</h1>
-        <p>. . . help Tacocat, the Purrrrrrveyor of Palindromes, escape from being eaten!</p>
+        <h1>Tacocat Escape!</h1>
+        <p>Help Madam Tacocat, the Purrrrrrveyor of Palindromes, escape from being eaten!</p>
 
         <div>
           <Route path='/register' component={Register} />

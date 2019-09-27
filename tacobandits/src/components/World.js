@@ -61,6 +61,8 @@ state = {
     render() {
         return (
             <Container style={{width: '100vw'}}>
+            <h2>How to Play</h2>
+            <h4>Tell Madam Tacocat, Purrrrveyor of Palindromes, where to go. If she disappears, she got eaten! How sad! Let's hope you can help her make it out alive. . . </h4>
             <div style={{ margin: "0 auto", textAlign: "center", display: 'flex', flexWrap: 'wrap'}}>
             {
             this.state.rooms.map(room => {

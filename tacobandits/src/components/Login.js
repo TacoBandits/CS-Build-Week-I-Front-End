@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios';
+import tacocat from '../images/TACOCAT.svg';
+import {Form, Button, Image, Icon} from 'semantic-ui-react';
 
 class Login extends React.Component {
 	state = {
@@ -29,9 +31,10 @@ class Login extends React.Component {
 	render() {
 		return (
 			<div>
-				<h2>Welcome, Log-In!</h2>
-				<form onSubmit={this.handleSubmit}>
-					<input 
+				<h2>I am Madam Tacocat, Purrrrveyor of Palindromes! Thanks for coming back to save me!</h2>
+				<Image size="mini" src={tacocat} style={{width: "250px", height: "250px"}} /> 
+				<Form onSubmit={this.handleSubmit}>
+					<Form.Input 
 						label='username'
 						name='username'
 						id='username'
@@ -39,7 +42,7 @@ class Login extends React.Component {
 						value={this.state.username}
 						onChange={this.handleChange}
 					/>
-					<input 
+					<Form.Input 
 						label='password' 
 						name='password'
 						id='password'
@@ -47,8 +50,10 @@ class Login extends React.Component {
 						value={this.state.password}
 						onChange={this.handleChange}
 					/>
-					<button type='submit'>submit</button>
-				</form>
+					<Button type='submit'>let's save tacocat!
+					</Button>
+					<Icon name="paw" size="big"></Icon> 
+				</Form>
 			</div>
 		)
 	}
