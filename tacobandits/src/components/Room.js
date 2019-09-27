@@ -1,6 +1,5 @@
 import React from 'react';
 import { Button, Popup, Image, Modal } from 'semantic-ui-react';
-import PortalExamplePortal from './modals/PortalExamplePortal';
 import tacocat from '../images/TACOCAT.svg';
 
 function Room(props) {
@@ -20,9 +19,9 @@ function Room(props) {
                                     <Image className="tacocat" size="mini" style={{ height: '100px', width: '150px' }} src={tacocat} alt="tacocat" /></div>)
                                 : <div className="emptyRoom">{props.room.description}</div>}
                         </div>
-                        : <div 
-                            className="winner" 
-                            style={{background: props.getRandomColor()}}>
+                        : <div
+                            className="winner"
+                            style={{ background: props.getRandomColor() }}>
                             <h2>You Win!</h2>
                             <Image className="tacocat" size="mini" style={{ height: '100px', width: '150px' }} src={tacocat} alt="tacocat" />
                             <h3>Madam Tacocat is saved!</h3>
