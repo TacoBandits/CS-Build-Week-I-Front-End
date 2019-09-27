@@ -8,22 +8,27 @@ class World extends React.Component {
         rooms: [],
         in_card: false,
         current_place: 39,
-        room_array: []
+        room_array: [],
+        moves: 0
     }
 
-    // 
 
     componentDidMount() {
         axios.get("https://tacobandits.herokuapp.com/api/adv/get_rooms/", { Authorization: `Token ${key}` }).then(res => {
-            console.log(res.data.room_list)
             this.setState({ rooms: res.data.room_list })
         }).catch(error => console.log(error))
+    }
+
+    incrementMoves = () => {
+        this.setState(prevState => ({
+            moves: ++prevState.moves
+        }));
     }
 
     goNorth = (newRoomId) => {
         // "N"
         this.setState({ current_place: newRoomId })
-
+        this.incrementMoves()
         // axios.post('https://tacobandits.herokuapp.com/api/adv/move/', {direction: "n"},
         // {Authorization: `Token ${key}`} 
         // )
@@ -32,6 +37,7 @@ class World extends React.Component {
 
     goWest = (newRoomId) => {
         this.setState({ current_place: newRoomId })
+        this.incrementMoves()
         // "W"
         // axios.post('https://tacobandits.herokuapp.com/api/adv/move/', {direction: "w"},
         // {Authorization: `Token ${key}`} 
@@ -41,6 +47,7 @@ class World extends React.Component {
 
     goEast = (newRoomId) => {
         this.setState({ current_place: newRoomId })
+        this.incrementMoves()
         // "E"
         // axios.post('https://tacobandits.herokuapp.com/api/adv/move/', {direction: "e"},
         // {Authorization: `Token ${key}`} 
@@ -50,6 +57,7 @@ class World extends React.Component {
 
     goSouth = (newRoomId) => {
         this.setState({ current_place: newRoomId })
+        this.incrementMoves()
         // "S"
 
         // axios.post('https://tacobandits.herokuapp.com/api/adv/move/', {direction: "s"},
@@ -58,6 +66,10 @@ class World extends React.Component {
         // .then(res => console.log(res)).catch(error => console.log(error))
     }
 
+    getRandomColor = () => {
+        return 'rgb(' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ',' + (Math.floor(Math.random() * 256)) + ')';
+      };
+
     render() {
         return (
             <div className='container'>
@@ -65,9 +77,17 @@ class World extends React.Component {
                     {
                         this.state.rooms.map(room => {
                             this.state.room_array.push(room.id)
-                            console.log(this.state.room_array.sort())
                             return (
-                                <Room room={room} current_place={this.state.current_place} goWest={this.goWest} goEast={this.goEast} goNorth={this.goNorth} goSouth={this.goSouth} />
+                                <Room
+                                    room={room}
+                                    current_place={this.state.current_place}
+                                    moves={this.state.moves}
+                                    getRandomColor={this.getRandomColor}
+                                    goWest={this.goWest}
+                                    goEast={this.goEast}
+                                    goNorth={this.goNorth}
+                                    goSouth={this.goSouth}
+                                />
                             )
                         })
                     }
