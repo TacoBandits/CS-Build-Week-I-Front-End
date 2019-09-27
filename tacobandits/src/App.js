@@ -29,9 +29,9 @@ class App extends React.Component {
         </header>
 
         <div className='title'>
-          <i class="fas fa-paw"></i>
+          <i className="fas fa-paw"></i>
           <h1>Tacocat Escape!</h1>
-          <i class="fas fa-paw"></i>
+          <i className="fas fa-paw"></i>
         </div>
 
 
