@@ -22,9 +22,9 @@ function Room(props) {
                         : <div
                             className="winner"
                             style={{ background: props.getRandomColor() }}>
-                            <h2>You Win!</h2>
+                            <h4>You Win!</h4>
                             <Image className="tacocat" size="mini" style={{ height: '100px', width: '150px' }} src={tacocat} alt="tacocat" />
-                            <h3>Madam Tacocat is saved!</h3>
+                            <h4>Madam Tacocat is saved!</h4>
                         </div>}
                 </div>
             </div>

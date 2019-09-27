@@ -20,10 +20,10 @@ class App extends React.Component {
         <header>
           <nav>
             <Button.Group>
-              <Button><NavLink to='/register'>Sign-Up</NavLink></Button>
-              <Button><NavLink to='/login'>Log-In</NavLink></Button>
-              <Button><NavLink to='/game'>Play!</NavLink></Button>
-              <Button onClick={this.logout}>Log-Out</Button>
+              <Button className='bigButton'><NavLink className='navLink' to='/register'>Sign-Up</NavLink></Button>
+              <Button className='bigButton'><NavLink className='navLink' to='/login'>Log-In</NavLink></Button>
+              <Button className='bigButton'><NavLink className='navLink' to='/game'>Play!</NavLink></Button>
+              <Button className='bigButton' onClick={this.logout}>Log-Out</Button>
             </Button.Group>
           </nav>
         </header>
