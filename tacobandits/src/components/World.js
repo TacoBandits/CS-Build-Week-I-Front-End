@@ -1,224 +1,78 @@
 import React from 'react'; 
 import axios from 'axios';
-import {Popup, Image, Card } from 'semantic-ui-react' 
-import tacocat from '../images/TACOCAT.svg';
+import Room from './Room';
+import {Popup, Image, Card, Container } from 'semantic-ui-react' 
 const key = localStorage.getItem('key');
 class World extends React.Component {
 state = {
-    rooms : [{
-        "id": 0,
-        "title": "blablabla", 
-        "description": "blablabla", 
-        "x": 0,
-        "y": 0, 
-        n_to: null,
-        e_to: null,
-        w_to: null,
-        s_to: null
-    }, 
-    {
-        "id": 1,
-        "title": "blablabla", 
-        "description": "blablabla", 
-        "x": 0,
-        "y": 0, 
-        n_to: null,
-        e_to: null,
-        w_to: null,
-        s_to: null
-    },
-    {
-    "id": 2,
-    "title": "name", 
-    "description": "blablabla", 
-    "x": 0,
-    "y": 0, 
-    n_to: null,
-    e_to: null,
-    w_to: null,
-    s_to: null
-}, {
-    "id": 0,
-    "title": "blablabla", 
-    "description": "blablabla", 
-    "x": 0,
-    "y": 0, 
-    n_to: null,
-    e_to: null,
-    w_to: null,
-    s_to: null
-}, 
-{
-    "id": 1,
-    "title": "blablabla", 
-    "description": "blablabla", 
-    "x": 0,
-    "y": 0, 
-    n_to: null,
-    e_to: null,
-    w_to: null,
-    s_to: null
-},
-{
-"id": 2,
-"title": "name", 
-"description": "blablabla", 
-"x": 0,
-"y": 0, 
-n_to: null,
-e_to: null,
-w_to: null,
-s_to: null
-}, {
-    "id": 0,
-    "title": "blablabla", 
-    "description": "blablabla", 
-    "x": 0,
-    "y": 0, 
-    n_to: null,
-    e_to: null,
-    w_to: null,
-    s_to: null
-}, 
-{
-    "id": 1,
-    "title": "blablabla", 
-    "description": "blablabla", 
-    "x": 0,
-    "y": 0, 
-    n_to: null,
-    e_to: null,
-    w_to: null,
-    s_to: null
-},
-{
-"id": 2,
-"title": "name", 
-"description": "blablabla", 
-"x": 0,
-"y": 0, 
-n_to: null,
-e_to: null,
-w_to: null,
-s_to: null
-}, {
-    "id": 0,
-    "title": "blablabla", 
-    "description": "blablabla", 
-    "x": 0,
-    "y": 0, 
-    n_to: null,
-    e_to: null,
-    w_to: null,
-    s_to: null
-}, 
-{
-    "id": 1,
-    "title": "blablabla", 
-    "description": "blablabla", 
-    "x": 0,
-    "y": 0, 
-    n_to: null,
-    e_to: null,
-    w_to: null,
-    s_to: null
-},
-{
-"id": 2,
-"title": "name", 
-"description": "blablabla", 
-"x": 0,
-"y": 0, 
-n_to: null,
-e_to: null,
-w_to: null,
-s_to: null
-}, {
-    "id": 0,
-    "title": "blablabla", 
-    "description": "blablabla", 
-    "x": 0,
-    "y": 0, 
-    n_to: null,
-    e_to: null,
-    w_to: null,
-    s_to: null
-}, 
-{
-    "id": 1,
-    "title": "blablabla", 
-    "description": "blablabla", 
-    "x": 0,
-    "y": 0, 
-    n_to: null,
-    e_to: null,
-    w_to: null,
-    s_to: null
-},
-{
-"id": 2,
-"title": "name", 
-"description": "blablabla", 
-"x": 0,
-"y": 0, 
-n_to: null,
-e_to: null,
-w_to: null,
-s_to: null
-}]
+    rooms: [],
+    in_card: false, 
+    current_place: 49
 }
 
+// 
+
     componentDidMount() {
-        axios.get("https://tacobandits.herokuapp.com/api/adv/", {Authorization: `Token ${key}`}).then(res => {
-        console.log(res)
+        axios.get("https://tacobandits.herokuapp.com/api/adv/get_rooms/", {Authorization: `Token ${key}`}).then(res => {
+        console.log(res.data.room_list)
+        this.setState({rooms: res.data.room_list})
         }).catch(error => console.log(error))
     }
 
     goUp = () => {
         // "N"
+        if ()
+        axios.post('https://tacobandits.herokuapp.com/api/adv/move/', {direction: "n"},
+        {Authorization: `Token ${key}`} 
+        )
+        .then(res => console.log(res)).catch(error => console.log(error))
     }
 
     goLeft = () => {
         // "W"
+        axios.post('https://tacobandits.herokuapp.com/api/adv/move/', {direction: "w"},
+        {Authorization: `Token ${key}`} 
+        )
+        .then(res => console.log(res)).catch(error => console.log(error))
     }
 
     goRight = () => {
         // "E"
+        axios.post('https://tacobandits.herokuapp.com/api/adv/move/', {direction: "e"},
+        {Authorization: `Token ${key}`} 
+        )
+        .then(res => console.log(res)).catch(error => console.log(error))
     }
 
     goDown = () => {
         // "S"
+        axios.post('https://tacobandits.herokuapp.com/api/adv/move/', {direction: "s"},
+        {Authorization: `Token ${key}`} 
+        )
+        .then(res => console.log(res)).catch(error => console.log(error))
     }
 
-    quit = () => {
-        // quit
-    }
 
     render() {
         return (
-            <div>
-            <Card.Group itemsPerRow={11}>
+            <Container>
+            <div style={{display: 'flex', flexWrap: 'wrap'}}>
             {
             this.state.rooms.map(room => {
                 return (
-                <div>
-              <Popup header={room.title} content={room.description} trigger={
-              <Card raised>
-                <Image size="mini" style={{height: '200px', width: '200px'}} src={tacocat} alt="tacocat" />
-                </Card>    
-              } />
-                </div>)
-            })
-            }
-            </Card.Group>
+              <Room room={room} current_place={this.state.current_place} />
+            )
+            })}
+            </div>
             <div>
-            <button onClick="goUp">up</button>
-            <button onClick="goLeft">left</button>
-            <button onClick="goRight">right</button>
-            <button onClick="goDown">down</button>
+            <div>
+            <button onClick={this.goUp}>up</button>
+            <button onClick={this.goLeft}>left</button>
+            <button onClick={this.goRight}>right</button>
+            <button onClick={this.goDown}>down</button>
             </div>
-            <button onClick="quit">quit</button>
             </div>
+            </Container>
         )
     }
 }
