@@ -18,7 +18,7 @@ class Login extends React.Component {
 	handleSubmit = e => {
 		e.preventDefault()
 		const endpoint = 'https://tacobandits.herokuapp.com/api/login/';
-
+		console.log("login is running!")
 		axios
 			.post(endpoint, this.state)
 			.then(response => {

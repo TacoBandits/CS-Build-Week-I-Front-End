@@ -19,7 +19,7 @@ class Register extends React.Component {
   handleSubmit = e => {
     e.preventDefault()
     const endpoint = 'https://tacobandits.herokuapp.com/api/registration/';
-
+    console.log("register is running!")
     axios
       .post(endpoint, this.state)
       .then(response => {

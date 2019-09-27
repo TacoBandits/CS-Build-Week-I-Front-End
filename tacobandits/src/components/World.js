@@ -76,15 +76,15 @@ class World extends React.Component {
                 <h2>Was It A Cat I SaW?</h2>
                 <div className='instructions'>
                     <div className='indInstructions'>
-                        <i class="fas fa-paw"></i>
+                        <i className="fas fa-paw"></i>
                         <h3>Why, yes, yes it was! That's <span>Madam Tacocat</span>! She is the Purrrrrrveyor of Palindromes, and she's in a bit of a pickle... an evil taco connoisseur has broken into the underground tunnels of her <span>101</span>-room mansion to devour her and she's on his <span>radar</span>!</h3>
                     </div>
                     <div className='indInstructions'>
-                        <i class="fas fa-paw"></i>
+                        <i className="fas fa-paw"></i>
                         <h3>The tunnels are the only way around her house, so be careful; one wrong move could send her straight into the jaws of THE <span>TACOCAT</span> EATER!!</h3>
                     </div>
                     <div className='indInstructions'>
-                        <i class="fas fa-paw"></i>
+                        <i className="fas fa-paw"></i>
                         <h3>Search for <span>Madam Tacocat</span> after every trip to see where she turns up! If you help her get out, she'll let you know! If you cant find her in her mansion, well, you know what they say, "<span>no lemon, no melon</span>," RIP <span>Madam Tacocat</span>, you will be missed!</h3>
                     </div>
                 </div>
@@ -112,4 +112,4 @@ class World extends React.Component {
     }
 }
 
-export default World;
+export default requiresAuth(World);
