@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import Room from './Room';
-import { Popup, Image, Card, Container } from 'semantic-ui-react'
+import requiresAuth from './requiresAuth';
 const key = localStorage.getItem('key');
 class World extends React.Component {
     state = {
@@ -112,4 +112,4 @@ class World extends React.Component {
     }
 }
 
-export default World
+export default requiresAuth(World);
