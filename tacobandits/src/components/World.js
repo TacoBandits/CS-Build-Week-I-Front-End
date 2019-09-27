@@ -7,7 +7,8 @@ class World extends React.Component {
 state = {
     rooms: [],
     in_card: false, 
-    current_place: 49
+    current_place: 39, 
+    room_array: []
 }
 
 // 
@@ -19,58 +20,57 @@ state = {
         }).catch(error => console.log(error))
     }
 
-    goUp = () => {
+    goNorth = (newRoomId) => {
         // "N"
-        if ()
-        axios.post('https://tacobandits.herokuapp.com/api/adv/move/', {direction: "n"},
-        {Authorization: `Token ${key}`} 
-        )
-        .then(res => console.log(res)).catch(error => console.log(error))
+        this.setState({current_place: newRoomId })
+
+        // axios.post('https://tacobandits.herokuapp.com/api/adv/move/', {direction: "n"},
+        // {Authorization: `Token ${key}`} 
+        // )
+        // .then(res => console.log(res)).catch(error => console.log(error))
     }
 
-    goLeft = () => {
+    goWest = (newRoomId) => {
+        this.setState({current_place: newRoomId })
         // "W"
-        axios.post('https://tacobandits.herokuapp.com/api/adv/move/', {direction: "w"},
-        {Authorization: `Token ${key}`} 
-        )
-        .then(res => console.log(res)).catch(error => console.log(error))
+        // axios.post('https://tacobandits.herokuapp.com/api/adv/move/', {direction: "w"},
+        // {Authorization: `Token ${key}`} 
+        // )
+        // .then(res => console.log(res)).catch(error => console.log(error))
     }
 
-    goRight = () => {
+    goEast = (newRoomId) => {
+        this.setState({current_place: newRoomId })
         // "E"
-        axios.post('https://tacobandits.herokuapp.com/api/adv/move/', {direction: "e"},
-        {Authorization: `Token ${key}`} 
-        )
-        .then(res => console.log(res)).catch(error => console.log(error))
+        // axios.post('https://tacobandits.herokuapp.com/api/adv/move/', {direction: "e"},
+        // {Authorization: `Token ${key}`} 
+        // )
+        // .then(res => console.log(res)).catch(error => console.log(error))
     }
 
-    goDown = () => {
+    goSouth = (newRoomId) => {
+        this.setState({current_place: newRoomId })
         // "S"
-        axios.post('https://tacobandits.herokuapp.com/api/adv/move/', {direction: "s"},
-        {Authorization: `Token ${key}`} 
-        )
-        .then(res => console.log(res)).catch(error => console.log(error))
-    }
 
+        // axios.post('https://tacobandits.herokuapp.com/api/adv/move/', {direction: "s"},
+        // {Authorization: `Token ${key}`} 
+        // )
+        // .then(res => console.log(res)).catch(error => console.log(error))
+    } 
 
     render() {
         return (
-            <Container>
-            <div style={{display: 'flex', flexWrap: 'wrap'}}>
+            <Container style={{width: '100vw'}}>
+            <div style={{ margin: "0 auto", textAlign: "center", display: 'flex', flexWrap: 'wrap'}}>
             {
             this.state.rooms.map(room => {
+                this.state.room_array.push(room.id)
+                console.log(this.state.room_array.sort())
                 return (
-              <Room room={room} current_place={this.state.current_place} />
+              <Room room={room} current_place={this.state.current_place} goWest={this.goWest} goEast={this.goEast} goNorth={this.goNorth} goSouth={this.goSouth} />
             )
-            })}
-            </div>
-            <div>
-            <div>
-            <button onClick={this.goUp}>up</button>
-            <button onClick={this.goLeft}>left</button>
-            <button onClick={this.goRight}>right</button>
-            <button onClick={this.goDown}>down</button>
-            </div>
+            })
+            }
             </div>
             </Container>
         )
