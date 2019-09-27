@@ -112,4 +112,4 @@ class World extends React.Component {
     }
 }
 
-export default requiresAuth(World);
+export default World;
